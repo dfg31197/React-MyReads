@@ -1,0 +1,90 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.smally{
+  font-size: 2vh;
+  position: absolute;
+  bottom:0;
+  right: 0;
+}
+.book-item{
+  width: 28vh;
+  height: 45vh;
+  margin: 2vh;
+  position: relative;
+  background: linear-gradient(90deg,#ddd ,#eee) ;
+  color:#212121;
+  font-size: 2vh;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+.shelf-container,.section{
+  margin: 0px;
+  padding: 0px;
+}
+#root{
+  font-family: Helvetica;
+}
+
+.shelf-header{
+  background-color: #263238;
+  margin: 0px;
+  color: #eee;
+  font-size: 4vh;
+  padding: 10px;
+}
+.landing-header{
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  height: 10vh;
+}
+.absol{
+  position: relative;
+}
+.potato{
+  width: 100%;
+  height: 35vh;
+}
+.butt{
+  width: 7vh;
+  position: relative;
+  top:85%;
+  left: 85%;
+  height: 7vh;
+  background-color: #FFF59D;
+  color:black;
+  border-radius: 100%;
+  border: 2px solid white;
+}
+.shelf-body{
+  height: 100%;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10vh;
+  margin: 0px;
+  overflow-x: scroll;
+}
+
+.header{
+  background: linear-gradient(45deg,#21313a,#263238);
+  margin: 0;
+  padding:5vh;
+  font-size: 6vh;
+  color:white;
+  margin-bottom: 2vh;
+
+}
+footer{
+  height: 20vh;
+  width: 100%;
+  background: linear-gradient(45deg,#263238,#212121);
+
+}
+
+.foo{
+  background-color: #FFB300;
+}

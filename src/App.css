@@ -1,0 +1,9 @@
+#root{
+  font-family: Helvetica;
+}
+.landing-header{
+  text-align: center;
+  background-color: #666;
+  color:white;
+  height: 4vh;
+}
