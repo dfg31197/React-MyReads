@@ -8,7 +8,22 @@ class Moar extends React.Component{
     input:"",
     results:[]
   }
-
+  handleUpdate=(id,shelf)=>{
+    api.get(id).then((book)=>{
+      api.update(book,shelf).then((res)=>{
+        this.setState((old)=>{
+          let x = old.results.map((a)=> {
+            if(a.id === book.id)
+            {
+              a.shelf = shelf;
+            }
+            return a;
+          })
+          return {results:x}
+        })
+      })
+    })
+  }
   render(){
     return (
       <div>
@@ -36,11 +51,27 @@ class Moar extends React.Component{
       if(res){
         if(res.length >0)
         {
+          api.getAll().then((landing)=>{
+            for(let searchBook of res){
+              searchBook.shelf = "none"
+              for(let yourBook of landing)
+              {
+                if(searchBook.id === yourBook.id)
+                {
+                  searchBook.shelf = yourBook.shelf
+                }
+              }
+            }
+
+
           this.setState({results:res})
-        }
+        })
       }
-    })
-  }
+    }
+
+  })
+
+}
 
 }
 

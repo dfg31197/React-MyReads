@@ -10,8 +10,8 @@ class Shelf extends React.Component{
       <div className="row shelf-header"><div className="col xs12"><span>{this.props.shelftype}</span></div></div>
       <hr />
       <div className="shelf-body">
-
-      {this.props.books.map((a)=> <div key={a.id} className="book-item hoverable" title={a.title}><Book key={a.id} id={a.id} thumb={a.imageLinks?a.imageLinks.thumbnail:"potato" } title={a.title} authors={a.authors} shelf={a.shelf} shelfTypes = {this.shelfTypes} update = {this.changeEm}/></div>)}
+      {console.log(this.props.books)}
+      {this.props.books.map((a)=> <div key={a.id} className="book-item hoverable" title={a.title}><Book key={a.id} id={a.id} thumb={a.imageLinks?a.imageLinks.thumbnail:"potato" } title={a.title} authors={a.authors} shelf={a.shelf?a.shelf:"None"} shelfTypes = {this.shelfTypes} update = {this.changeEm}/></div>)}
 
       </div>
       </div>

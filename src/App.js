@@ -9,7 +9,7 @@ class App extends Component {
     reading:[],
     read:[],
     wish:[],
-    load: false,
+
   }
   potato = ()=>{
     api.getAll().then((books)=>{
@@ -20,6 +20,7 @@ class App extends Component {
       const wish=[]
       const load= true
       books.forEach((book)=>{
+
         book.shelf === `currentlyReading` && (
           reading.push(book)
         )
@@ -32,6 +33,7 @@ class App extends Component {
           wish.push(book)
         )
       })
+
       this.setState({reading,read,wish})
     })
   }

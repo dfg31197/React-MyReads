@@ -12,18 +12,21 @@ class Book extends React.Component{
   }
   componentWillReceiveProps(newProps){
     const shelf = newProps.shelf
+    //console.log(shelf)
     this.setState({shelf})
   }
 
   render(){
 
     return (
+
       <div>
       <div className="potato" style={{background:`url(${this.props.thumb}) no-repeat`,backgroundSize:`cover`}} >
       <div className = "butt">      <DropDownMenu value="Yes" onChange={this.handleChange}>
                 {this.props.shelfTypes.map((shelf) =>{
                   let text = shelf;
-                  text === this.state.shelf && (
+
+                  text === this.props.shelf && (
                     text = `✓ ` + text
                   )
                   return <MenuItem key={shelf} value={shelf} primaryText={text} />
