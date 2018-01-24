@@ -3,15 +3,16 @@ import Shelf from "./Section"
 import * as api from "./BooksAPI"
 class App extends Component {
   state={
+    all:[],
     reading:[],
     read:[],
     wish:[],
     load: false,
   }
-  componentDidMount(){
+  potato = ()=>{
     api.getAll().then((books)=>{
 // Sorting books into respective categories
-console.log(books)
+
       const reading=[]
       const read=[]
       const wish=[]
@@ -32,6 +33,15 @@ console.log(books)
       this.setState({reading,read,wish})
     })
   }
+  componentDidMount(){
+    this.potato()
+  }
+
+  handleUpdate =(id,shelf)=>{
+    api.get(id).then((book)=>{
+      return api.update(book,shelf);
+    }).then(this.potato)
+  }
 render(){
   return (
     <div>
@@ -40,9 +50,9 @@ render(){
     <span>MyReads</span>
     </div>
     </div>
-    <Shelf shelftype="Currently Reading" books={this.state.reading} />
-    <Shelf shelftype="Want To Read" books={this.state.read}/>
-    <Shelf shelftype="Wishlist" books={this.state.wish}/>
+    <Shelf key={1} shelftype="Currently Reading" books={this.state.reading} updateShelf={this.handleUpdate} />
+    <Shelf key={2} shelftype="Want To Read" books={this.state.read} updateShelf={this.handleUpdate}/>
+    <Shelf key={3} shelftype="Wishlist" books={this.state.wish} updateShelf={this.handleUpdate}/>
     <div className = "divider foo"  />
     <footer></footer>
     </div>

@@ -2,9 +2,17 @@ import React from "react"
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 class Book extends React.Component{
-
-  handleChange=()=>{
-    console.log("Clicked")
+  state = {
+    shelf: this.props.shelf
+  }
+  handleChange=(obj)=>{
+    if(obj.target.innerHTML !== this.state.shelf){
+      this.props.update(this.props.id,obj.target.innerHTML)
+    }
+  }
+  componentWillReceiveProps(newProps){
+    const shelf = newProps.shelf
+    this.setState({shelf})
   }
 
   render(){
@@ -13,9 +21,14 @@ class Book extends React.Component{
       <div>
       <div className="potato" style={{background:`url(${this.props.thumb}) no-repeat`,backgroundSize:`cover`}} >
       <div className = "butt">      <DropDownMenu value="Yes" onChange={this.handleChange}>
-                <MenuItem value={1} primaryText="Never" />
-                <MenuItem value={2} primaryText="Every Night" />
-                <MenuItem value={3} primaryText="Weeknights" />
+                {this.props.shelfTypes.map((shelf) =>{
+                  let text = shelf;
+                  text === this.state.shelf && (
+                    text = `✓ ` + text
+                  )
+                  return <MenuItem key={shelf} value={shelf} primaryText={text} />
+                })}
+
               </DropDownMenu></div>
       </div>
 
