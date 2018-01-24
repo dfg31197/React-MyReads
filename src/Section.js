@@ -1,7 +1,7 @@
 import React from "react"
 import Book from "./Book"
 class Shelf extends React.Component{
-      shelfTypes= "currentlyReading read wantToRead".split(" ")
+      shelfTypes= "currentlyReading read wantToRead none".split(" ")
   render(){
 
     return (
@@ -11,7 +11,7 @@ class Shelf extends React.Component{
       <hr />
       <div className="shelf-body">
 
-      {this.props.books.map((a)=> <div key={a.imageLinks.thumbnail} className="book-item hoverable" title={a.title}><Book key={a.id} id={a.id} thumb={a.imageLinks.thumbnail} title={a.title} authors={a.authors} shelf={a.shelf} shelfTypes = {this.shelfTypes} update = {this.changeEm}/></div>)}
+      {this.props.books.map((a)=> <div key={a.id} className="book-item hoverable" title={a.title}><Book key={a.id} id={a.id} thumb={a.imageLinks?a.imageLinks.thumbnail:"potato" } title={a.title} authors={a.authors} shelf={a.shelf} shelfTypes = {this.shelfTypes} update = {this.changeEm}/></div>)}
 
       </div>
       </div>

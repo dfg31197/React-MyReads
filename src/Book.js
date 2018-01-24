@@ -32,9 +32,9 @@ class Book extends React.Component{
               </DropDownMenu></div>
       </div>
 
-      <p className="center-align">{this.props.title}</p>
+      <p className="center-align truncate">{this.props.title}</p>
+      <span className = "smally">{this.props.authors?this.props.authors[0]:"Potato"}</span>
 
-      <span className="smally">-{this.props.authors[0]}</span>
       </div>
     )
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Shelf from "./Section"
+import {Route,BrowserRouter,Link} from "react-router-dom"
 import * as api from "./BooksAPI"
+
 class App extends Component {
   state={
     all:[],
@@ -51,9 +53,10 @@ render(){
     </div>
     </div>
     <Shelf key={1} shelftype="Currently Reading" books={this.state.reading} updateShelf={this.handleUpdate} />
-    <Shelf key={2} shelftype="Want To Read" books={this.state.read} updateShelf={this.handleUpdate}/>
+    <Shelf key={2} shelftype="Read" books={this.state.read} updateShelf={this.handleUpdate}/>
     <Shelf key={3} shelftype="Wishlist" books={this.state.wish} updateShelf={this.handleUpdate}/>
     <div className = "divider foo"  />
+    <Link to="/add" className="floatingButt"></Link>
     <footer></footer>
     </div>
   )
