@@ -1,5 +1,6 @@
 import React from "react"
 import DropDownMenu from 'material-ui/DropDownMenu';
+import {Link} from "react-router-dom"
 import MenuItem from 'material-ui/MenuItem';
 class Book extends React.Component{
   state = {
@@ -21,7 +22,7 @@ class Book extends React.Component{
     return (
 
       <div>
-      <div className="potato" style={{background:`url(${this.props.thumb}) no-repeat`,backgroundSize:`cover`}} >
+      <Link key={`routerID${this.props.id}`} to={`/book/${this.props.id}`}><div className="potato" style={{background:`url(${this.props.thumb}) no-repeat`,backgroundSize:`cover`}} >
       <div className = "butt">      <DropDownMenu value="Yes" onChange={this.handleChange}>
                 {this.props.shelfTypes.map((shelf) =>{
                   let text = shelf;
@@ -33,7 +34,7 @@ class Book extends React.Component{
                 })}
 
               </DropDownMenu></div>
-      </div>
+      </div></Link>
 
       <p className="center-align truncate">{this.props.title}</p>
       <span className = "smally">{this.props.authors?this.props.authors[0]:"Potato"}</span>

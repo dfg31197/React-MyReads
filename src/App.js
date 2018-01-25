@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import Shelf from "./Section"
 import {Route,BrowserRouter,Link} from "react-router-dom"
+import "./logo.svg"
 import * as api from "./BooksAPI"
 
 class App extends Component {
   state={
-    all:[],
     reading:[],
     read:[],
     wish:[],
 
   }
+
+
+  // This function is responsible for ultimately setting the state of the app
   potato = ()=>{
     api.getAll().then((books)=>{
 // Sorting books into respective categories
@@ -49,6 +52,7 @@ class App extends Component {
 render(){
   return (
     <div>
+    <Link to="/add"><div className="floatingButt"><span>📚</span></div></Link>
     <div className="row header valign-wrapper">
     <div className="col s12">
     <span>MyReads</span>
@@ -58,7 +62,6 @@ render(){
     <Shelf key={2} shelftype="Read" books={this.state.read} updateShelf={this.handleUpdate}/>
     <Shelf key={3} shelftype="Wishlist" books={this.state.wish} updateShelf={this.handleUpdate}/>
     <div className = "divider foo"  />
-    <Link to="/add" className="floatingButt"></Link>
     <footer></footer>
     </div>
   )
