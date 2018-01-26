@@ -11,7 +11,7 @@ class Shelf extends React.Component{
       <hr />
       <div className="shelf-body">
       {console.log(this.props.books)}
-      {this.props.books.map((a)=> <div key={a.id} className="book-item hoverable" title={a.title}><Book key={a.id} id={a.id} thumb={a.imageLinks?a.imageLinks.thumbnail:"potato" } title={a.title} authors={a.authors} shelf={a.shelf?a.shelf:"None"} shelfTypes = {this.shelfTypes} update = {this.changeEm}/></div>)}
+      {this.props.books.map((a)=> <div key={a.id} className="book-item hoverable" title={a.title}><Book key={a.id} id={a.id} thumb={a.imageLinks?a.imageLinks.thumbnail:"potato" } title={a.title} authors={a.authors} shelf={a.shelf?a.shelf:"None"} shelfTypes = {this.shelfTypes} update = {this.changeEm} all={a}/></div>)}
 
       </div>
       </div>

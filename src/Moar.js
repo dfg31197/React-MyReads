@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Shelf from "./Section"
+
 import {Route,BrowserRouter,Link} from "react-router-dom"
 import * as api from "./BooksAPI"
 
@@ -31,8 +32,9 @@ class Moar extends React.Component{
         <div className="row">
           <form className="col s12" onSubmit={(e)=>{e.preventDefault()}}>
             <div className="row">
-              <div className="input-field col s12">
-                <input id="icon_prefix" type="text" className="validate" placeholder="Search Books Here!" onChange={this.handleSearch} value={this.state.input}/>
+
+              <div className="input-field col s12 moar-head">
+                <Link to="/" className="back valign-wrapper">↤</Link><input id="icon_prefix" type="text" className="validate" placeholder="Search Books Here!" onChange={this.handleSearch} value={this.state.input}/>
 
               </div>
 

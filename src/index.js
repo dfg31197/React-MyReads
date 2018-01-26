@@ -12,6 +12,7 @@ import './index.css';
 import Moar from "./Moar"
 import 'materialize-css/dist/fonts/roboto/Roboto-Medium.woff'
 import 'materialize-css/dist/fonts/roboto/Roboto-Medium.woff2'
+import 'materialize-css/dist/js/materialize.js'
 
 
 import App from './App';
@@ -23,7 +24,8 @@ ReactDOM.render(
   <div>
   <Route exact path="/add" component={Moar} />
   <Route exact path="/" component={App} />
-  <Route exact path="/book/:id" render={()=>{
+  <Route exact path="/book/:id" render={(link)=>{
+    return <BookDetails query={link.match.params.id} />
   }}/>
   </div>
   </BrowserRouter>
