@@ -1,39 +1,64 @@
 import React from "react"
 import DropDownMenu from 'material-ui/DropDownMenu';
-import {Link} from "react-router-dom"
 import MenuItem from 'material-ui/MenuItem';
 import Modal from "react-responsive-modal"
-class Book extends React.Component{
-  state = {
-    shelf: this.props.shelf,
-    open:false
-  }
 
+/*
+  This component represents a book in a book-shelf. Clicking on the thumbnail
+  triggers a modal ~ react-responsive-modal used here~ displaying further details
 
-  onOpenModal = () => {
-    this.setState({ open: true });
-  };
+  Material-ui's DropDownMenu is included to represent/change the state of the book
+  regarding the available book-shelf types
+*/
 
-  onCloseModal = () => {
-    this.setState({ open: false });
-  };
-
-  handleChange=(obj)=>{
-    if(obj.target.innerHTML !== this.state.shelf){
-      this.props.update(this.props.id,obj.target.innerHTML)
+class Book extends React.Component {
+    state = {
+        shelf: this.props.shelf,
+        open: false
     }
-  }
-  componentWillReceiveProps(newProps){
-    const shelf = newProps.shelf
-    //console.log(shelf)
-    this.setState({shelf})
-  }
 
-  render(){
+    // Handles the responsive modal states
+    onOpenModal = () => {
+        this.setState({
+            open: true
+        });
+    };
+    // Handles the responsive modal states
+    onCloseModal = () => {
+        this.setState({
+            open: false
+        });
+    };
 
-    return (
+    handleChange = (obj) => {
+        if (obj.target.innerHTML !== this.state.shelf) {
+            // Converting my custom shelf property to the possibly pre-defined values of "shelf" property and vice versa
+            let theState = '';
+            if (obj.target.innerHTML === `Currently Reading` || obj.target.innerHTML === `currentlyReading`) {
+                theState = `currentlyReading`
+            } else if (obj.target.innerHTML === `Read` || obj.target.innerHTML === `read`) {
+                theState = `read`
+            } else if (obj.target.innerHTML === `WishList` || obj.target.innerHTML === `wantToRead`) {
+                theState = `wantToRead`
+            } else {
+                theState = `none`
+            }
+            this.props.update(this.props.id, theState)
+        }
+    }
+    componentWillReceiveProps(newProps) {
+        const shelf = newProps.shelf
+        //console.log(shelf)
+        this.setState({
+            shelf
+        })
+    }
 
-      <div style={{position:"relative"}}>
+    render() {
+
+        return (
+
+            <div style={{position:"relative"}}>
       <div className = "butt">      <DropDownMenu value="Yes" onChange={this.handleChange}>
                 {this.props.shelfTypes.map((shelf) =>{
                   let text = shelf;
@@ -60,7 +85,7 @@ class Book extends React.Component{
         </div>
         <div className="divider"/>
         <div className="section">
-        <p className="modal-details-text">{this.props.all.description}</p>
+        <p className="modal-details-text">{this.props.all.description?this.props.all.description:"-No description available.-"}</p>
 
         <p style={{fontStyle:"italic",fontSize:"2vh"}}>~{this.props.all.pageCount} Pages</p>
         </div>
@@ -88,8 +113,8 @@ class Book extends React.Component{
       <span className = "smally">{this.props.authors?this.props.authors[0]:"Potato"}</span>
 
       </div>
-    )
-  }
+        )
+    }
 }
 
 export default Book;
