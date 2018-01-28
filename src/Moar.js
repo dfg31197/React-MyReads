@@ -103,7 +103,7 @@ class Moar extends React.Component {
             input: a.target.value,
             load: false
         })
-        api.search(this.state.input).then((res) => {
+        api.search(a.target.value).then((res) => {
             if (res) {
                 if (res.length > 0) {
                     /*
